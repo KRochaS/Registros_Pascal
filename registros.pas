@@ -155,3 +155,80 @@ begin
 
     readln;
 end.
+
+// 4)  Escreva um programa para cadastrar até 30 alunos de uma turma. As informações necessárias são:
+// nome do aluno, nome da disciplina e média final. Deve ser usada uma estrutura de registro para
+// a construção deste cadastro, usando Type para a declaração do registro. Ao final do cadastro de
+// cada aluno deverá ser perguntado: "Novo Aluno (S/N)?". Deve-se utilizar um vetor do tipo
+// declarado como registro para a solução deste programa. Após o término de todos os cadastros, ou
+// seja, quando o usuário digitar "N" na pergunta para novo aluno ou quando preencher o vetor com
+// 30 alunos, a tela deverá ser limpa e deverá ser montada uma tela para permitir a consulta aos
+// alunos: por nome. Deverá ser digitada a palavra FIM para o nome para encerrar o programa. Você
+// deverá fazer uma tela de consulta com o formato que achar adequado. 
+
+program exerc4reg;
+uses crt;
+
+type alunoscad = record
+              nome:string[30];
+              disc: string[40];
+              medf: real;
+              end;
+
+var alunos: array [1..5] of alunoscad;
+var i, cont: integer;
+var nomealuno: string[10];
+var resp:char;
+
+begin
+
+     cont:=0;
+     writeln('----- Cadastro de Alunos -----');
+     writeln;
+     writeln('Deseja cadastrar um aluno? [s/n]: ');
+     readln(resp);
+     while(resp='s') and (cont<5) do
+           begin
+
+                cont:=cont+1;
+                write('Nome do Aluno: ');
+                readln(alunos[cont].nome);
+                write('Nome da Disciplina: ');
+                readln(alunos[cont].disc);
+                write('Media Final: ');
+                readln(alunos[cont].medf);
+                writeln;
+                write('Novo Aluno? [s/n]: ');
+                readln(resp);
+             end;
+
+    writeln('--------------------------------');
+    clrscr;
+
+    writeln('-------- Consulta de Alunos ------');
+
+    writeln ('Digite o nome do aluno para consulta: ');
+    readln(nomealuno);
+    clrscr;
+
+    writeln('-------- Lista de Alunos ------');
+    while (nomealuno <> 'fim') do
+         for i:=1 to cont do
+				if nomealuno = alunos[i].nome then
+					begin
+                        write('Nome do Aluno: ');
+						writeln(alunos[i].nome);
+                        write('Nome da Disciplina: ');
+                        writeln(alunos[i].disc);
+                        write('Media Final: ');
+                        writeln(alunos[i].medf:5:2);
+					    write('Digite um novo nome para consulta ou fim para encerrar: ');
+		    		    readln(nomealuno);
+		  		end;
+		  ;
+		;			
+
+   readln;
+
+
+end.
