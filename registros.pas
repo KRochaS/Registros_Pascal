@@ -91,3 +91,67 @@ begin
 
     readln;
 end.
+
+// 3)  O mesmo exercício anterior, mas após o término de todos os cadastros, ou seja, quando o usuário
+// digitar "N" na pergunta para novo cliente ou quando preencher o vetor com 50 clientes, a tela
+// deverá ser limpa e deverá ser montada uma tela para permitir a consulta aos clientes: por código
+// (que é o índice do vetor). Deverá ser digitado o código 999 para encerrar o programa
+
+program exerc3reg;
+uses crt;
+
+type cadastro = record
+               nome, ender: string[40];
+               fone:string[20];
+               end;
+
+var cliente: array[1..2] of cadastro;
+var i, cont,cod: integer;
+var resp: string[10];
+
+begin
+     cont:=0;
+     cod:=0;
+     writeln('Deseja fazer um cadastro: ');
+     readln(resp);
+     while(resp='s') and (cont<50) do
+         begin
+              cont:=cont+1;
+              cod:=cod+1;
+              write('Nome: ');
+              readln(cliente[cod].nome);
+              write('Endereco: ');
+              readln(cliente[cod].ender);
+              write('Telefone: ');
+              readln(cliente[cod].fone);
+              write('Deseja fazer um cadastro: ');
+              readln(resp);
+         end;
+
+         writeln('------------------------');
+
+
+         clrscr; 
+
+         while(cod<>999) and(cod<=cont) do
+            begin
+                 write('Digite o codigo do cliente: ');
+                 readln(cod);
+                 if cod<>999 then
+                    begin
+                         write('Nome: ');
+                         writeln(cliente[cod].nome);
+                         write('Endereco: ');
+                         writeln(cliente[cod].ender);
+                         write('Telefone: ');
+                         writeln(cliente[cod].fone);
+                         write('<Digite 999 para sair...>');
+                         writeln;
+                    end;
+             end;
+
+
+
+
+    readln;
+end.
