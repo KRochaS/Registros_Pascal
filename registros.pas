@@ -505,7 +505,7 @@ begin
 
 end.
 
-8)  Faça um programa em Pascal para cadastrar o horário de partida de vôos, com os dados: código, horário de
+// 8)  Faça um programa em Pascal para cadastrar o horário de partida de vôos, com os dados: código, horário de
 // partida, quantidade de passageiros, valor da passagem, origem e destino. Solicitar ao usuário a origem e
 // mostrar   todos   os   dados   dos   vôos   que   possuem   esta   origem.   Mostrar, também, todos os vôos que
 // possuem horário de partida pela manhã.
