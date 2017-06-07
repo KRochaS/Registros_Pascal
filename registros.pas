@@ -435,8 +435,7 @@ begin
 
      while(resp='s') and (cont<5) do
               begin
-
-                   cont:=cont+1;
+		   cont:=cont+1;
                    write('Digite o nome do municipio: ');
                    readln(mcp[cont].nome);
                    write('Digite o estado: ');
@@ -506,3 +505,117 @@ begin
 
 end.
 
+8)  Faça um programa em Pascal para cadastrar o horário de partida de vôos, com os dados: código, horário de
+// partida, quantidade de passageiros, valor da passagem, origem e destino. Solicitar ao usuário a origem e
+// mostrar   todos   os   dados   dos   vôos   que   possuem   esta   origem.   Mostrar, também, todos os vôos que
+// possuem horário de partida pela manhã.
+
+program exerc8;
+uses crt;
+
+type partvoos = record
+            cdg:string[10];
+            hp:integer;
+            qtdpassageiro:string[10];
+            valpassagem:string[10];
+            origem:string[20];
+            dest:string[20];
+            end;
+
+var voos: array [1..10] of partvoos;
+var resp:char;
+var cont, i: integer;
+var org:string[10];
+
+begin
+     cont:=0;
+     writeln('------------- Cadastro Horários de Partidas de Voo -----------');
+     writeln;
+     write('Deseja cadastrar um voo? [s/n]: ');
+     readln(resp);
+     writeln;
+
+     while(resp='s') or (resp='S') and (cont<10) do
+              begin
+                   cont:=cont+1;
+                   write('Digite o codigo: ');
+                   readln(voos[cont].cdg);
+                   write('Digite Horario de Partida: ');
+                   readln(voos[cont].hp);
+                   write('Digite a quantidade de passageiros: ');
+                   readln(voos[cont].qtdpassageiro);
+                   write('Digite o valor das passagens: ');
+                   readln(voos[cont].valpassagem);
+                   write('Digite a Origem: ');
+                   readln(voos[cont].origem);
+                   write('Digite o Destino: ');
+                   readln(voos[cont].dest);
+                   writeln;
+                   write('Cadastrar novo voo? [s/n]: ');
+                   readln(resp);
+               end;
+
+               writeln;
+
+               write('-------- Pesquisa de voos pela Origem -------');
+               writeln;
+
+              writeln('Digite a Origem que deseja pesquisa: ');
+              readln(org);
+
+              writeln;
+
+              clrscr;
+
+              write('------ Voos com a Origem escolhida ------');
+              writeln;
+
+              for i:=1 to cont do
+                  if(org = voos[i].origem) then
+                            begin
+                                 write('Codigo: ');
+                                 writeln(voos[i].cdg);
+                                 write('Horario de Partida: ');
+                                 writeln(voos[i].hp);
+                                 write('Quantidade de passagens: ');
+                                 writeln(voos[i].qtdpassageiro);
+                                 write('Valor das passagens: ');
+                                 writeln(voos[i].valpassagem);
+                                 write('Origem: ');
+                                 writeln(voos[i].origem);
+                                 write('Destino: ');
+                                 writeln(voos[i].dest);
+                                 writeln;
+                             end;
+                 ;
+
+           ;
+
+
+           writeln;
+           writeln('-------- Todos os voos pela manha -------');
+
+           for i:=1 to cont do
+               if(voos[i].hp < 12) then
+                            begin
+                                 write('Codigo: ');
+                                 writeln(voos[i].cdg);
+                                 write('Horario de Partida: ');
+                                 writeln(voos[i].hp);
+                                 write('Quantidade de passagens: ');
+                                 writeln(voos[i].qtdpassageiro);
+                                  write('Valor das passagens: ');
+                                 writeln(voos[i].valpassagem);
+                                 write('Origem: ');
+                                 writeln(voos[i].origem);
+                                 write('Destino: ');
+                                 writeln(voos[i].dest);
+                                 writeln;
+                             end;
+               ;
+         ;
+
+         readln;
+
+
+end.
