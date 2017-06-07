@@ -235,9 +235,9 @@ end.
 
 
 // 5) Faça um programa em Pascal para cadastrar até 300 imóveis a serem alugados ou vendidos, contendo os
-seguintes dados: tipo (loja, apartamento, casa, quitinete (kitchenet), endereço, bairro, valor, situação (aluguel
-ou venda). Ao final, solicitar ao usuário a situação a ser pesquisada e mostrar todos os dados dos imóveis
-enquadrados na solicitação.
+// seguintes dados: tipo (loja, apartamento, casa, quitinete (kitchenet), endereço, bairro, valor, situação (aluguel
+// ou venda). Ao final, solicitar ao usuário a situação a ser pesquisada e mostrar todos os dados dos imóveis
+// enquadrados na solicitação.
 
 program exerc5;
 uses crt;
@@ -323,4 +323,88 @@ begin
 
 
 
+end.
+
+// 6)  Faça um programa em Pascal para ler os dados (nome, salário, estado civil, sexo, número de dependentes,
+// cidade e estado de residência) dos funcionários de uma empresa e mostrar uma listagem de todos os dados dos
+// funcionários(as) CASADOS(AS), residentes no RS e com SALÁRIO  acima  de R$ 1.500,00. Cadastrar no
+// máximo 200 funcionários.
+
+program exerc2Extra;
+uses crt;
+
+type funcionarios = record
+                    nome:string[10];
+                    sal:string[10];
+                    ec:string[10];
+                    sexo:string[10];
+                    depen:string[5];
+                    cidade:string[10];
+                    estado:string[5];
+                    end;
+
+var func: array [1..200] of funcionarios;
+var cont, i: integer;
+var resp: string[5];
+
+
+begin
+    cont:=0;
+    writeln('------- Cadastro de Funcionários -------');
+    writeln;
+    write('Deseja cadastrar um funcionario? [s/n]: ');
+    readln(resp);
+
+    writeln;
+
+    while(resp='s') and (cont<200) do
+         begin
+              cont:=cont+1;
+              write('Digite o nome: ');
+              readln(func[cont].nome);
+              write('Digite o salario: ');
+              readln(func[cont].sal);
+              write('Digite o Estado Civil: [c/s]: ');
+              readln(func[cont].ec);
+              write('Digite o Sexo [f/m]: ');
+              readln(func[cont].sexo);
+              write('Digite a quantidade de dependentes(filhos): ');
+              readln(func[cont].depen);
+              write('Digite a Cidade: ');
+              readln(func[cont].cidade);
+              write('Digite o estado: ');
+              readln(func[cont].estado);
+              writeln;
+              write('Novo Funcionario? [s/n]: ');
+              readln(resp);
+         end;
+
+         clrscr;
+
+         writeln('-------- Lista de Funcionarios ------------');
+         writeln;
+
+         for i:=1 to cont do
+             if((func[i].ec='c') and (func[i].estado='RS') and (func[i].sal>'1500')) then
+                     begin
+                           write('Nome: ');
+                           writeln(func[i].nome);
+                           write('Salario: ');
+                           writeln(func[i].sal);
+                           write('Estado Civil: ');
+                           writeln(func[i].ec);
+                           write('Sexo [f/m]: ');
+                           writeln(func[i].sexo);
+                           write('Quantidade de dependentes(filhos): ');
+                           writeln(func[i].depen);
+                           write('Cidade: ');
+                           writeln(func[i].cidade);
+                           write('Estado: ');
+                           writeln(func[i].estado);
+                           writeln;
+                       end;
+               ;
+         ;
+
+      readln;
 end.
