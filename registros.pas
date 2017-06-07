@@ -214,21 +214,113 @@ begin
     writeln('-------- Lista de Alunos ------');
     while (nomealuno <> 'fim') do
          for i:=1 to cont do
-				if nomealuno = alunos[i].nome then
-					begin
-                        write('Nome do Aluno: ');
-						writeln(alunos[i].nome);
-                        write('Nome da Disciplina: ');
-                        writeln(alunos[i].disc);
-                        write('Media Final: ');
-                        writeln(alunos[i].medf:5:2);
-					    write('Digite um novo nome para consulta ou fim para encerrar: ');
-		    		    readln(nomealuno);
-		  		end;
+	      if nomealuno = alunos[i].nome then
+               		begin
+                             write('Nome do Aluno: ');
+			     writeln(alunos[i].nome);
+                             write('Nome da Disciplina: ');
+                             writeln(alunos[i].disc);
+                             write('Media Final: ');
+                             writeln(alunos[i].medf:5:2);
+		             write('Digite um novo nome para consulta ou fim para encerrar: ');
+		             readln(nomealuno);
+		  	end;
 		  ;
-		;			
+	;			
 
    readln;
+
+
+end.
+
+
+// 5) Faça um programa em Pascal para cadastrar até 300 imóveis a serem alugados ou vendidos, contendo os
+seguintes dados: tipo (loja, apartamento, casa, quitinete (kitchenet), endereço, bairro, valor, situação (aluguel
+ou venda). Ao final, solicitar ao usuário a situação a ser pesquisada e mostrar todos os dados dos imóveis
+enquadrados na solicitação.
+
+program exerc5;
+uses crt;
+
+type imovel = record
+            tipo:string[30];
+            ender:string[30];
+            bairro:string[30];
+            situacao:string[20];
+            end;
+var imoveis: array[1..5] of imovel;
+var resp, respconsult:string[10];
+var i,cont: integer;
+
+begin
+     cont:=0;
+      writeln('------- Cadastro de Imoveis -------');
+      writeln;
+      write('Deseja cadastrar um imovel? [s/n]: ');
+      readln(resp);
+
+      writeln;
+
+      while(resp='s') and (cont<5) do
+            begin
+                 cont:=cont+1;
+                 writeln('Tipos de Imoveis: ');
+                 writeln('- Loja');
+                 writeln('- Apartamento');
+                 writeln('- Casa');
+                 writeln('- Kitchenet');
+                 writeln;
+                 write('Digite o tipo do Imovel: ');
+                 readln(imoveis[cont].tipo);
+                 write('Digite o endereco: ');
+                 readln(imoveis[cont].ender);
+                 write('Digite o Bairro: ');
+                 readln(imoveis[cont].bairro);
+                 writeln;
+                 writeln('Situacao do Imovel: ');
+                 writeln('- Aluguel');
+                 writeln('- Venda');
+                 writeln;
+                 write('Digite a situacao: ');
+                 readln(imoveis[cont].situacao);
+                 write('Novo Imovel? [s/n]: ');
+                 readln(resp);
+                 writeln;
+            end;
+
+             clrscr;
+
+             writeln('----- Consulta de Imoveis ----');
+             writeln;
+             writeln('Situacoes dos Imoveis: ');
+             writeln('- Aluguel');
+             writeln('- Venda');
+             writeln;
+             write('Digite a situacao dos imoveis que gostaria  de encontrar: ');
+             readln(respconsult);
+
+             clrscr;
+
+             writeln('------- Lista de Imoveis -------');
+             for i:=1 to cont do
+                 if(respconsult=imoveis[i].situacao) then
+                           begin
+                                write('Tipo do Imovel: ');
+                                writeln(imoveis[i].tipo);
+                                write('Endereco: ');
+                                writeln(imoveis[i].ender);
+                                write('Bairro: ');
+                                writeln(imoveis[i].bairro);
+                                write('Situacao: ');
+                                writeln(imoveis[i].situacao);
+                                writeln;
+                                writeln;
+                           end;
+                   ;
+            ;
+
+     readln;
+
 
 
 end.
