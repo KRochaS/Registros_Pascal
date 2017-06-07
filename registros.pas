@@ -330,7 +330,7 @@ end.
 // funcionários(as) CASADOS(AS), residentes no RS e com SALÁRIO  acima  de R$ 1.500,00. Cadastrar no
 // máximo 200 funcionários.
 
-program exerc2Extra;
+program exerc6;
 uses crt;
 
 type funcionarios = record
@@ -408,3 +408,101 @@ begin
 
       readln;
 end.
+
+// 7) Faça um programa em Pascal para cadastrar o nome do município, seu estado e sua população. Mostrar todos
+// os  municípios  cadastrados  do  estado  de  Goiás e  os dados  do município  que  contém a  maior  população.
+// Cadastrar até 90 municípios.
+
+program exerc7;
+uses crt;
+
+type municipios = record
+                  nome:string[10];
+                  estado:string[10];
+                  populacao: integer;
+                  end;
+var mcp: array [1..5] of municipios;
+var resp:string[10];
+var cont, i, pos, maior: integer;
+
+begin
+     cont:=0;
+     pos:=0;
+     writeln('------ Cadastrar Municipios ------');
+     writeln;
+     writeln('Deseja cadastrar um municipio? [s/n]: ');
+     readln(resp);
+
+     while(resp='s') and (cont<5) do
+              begin
+
+                   cont:=cont+1;
+                   write('Digite o nome do municipio: ');
+                   readln(mcp[cont].nome);
+                   write('Digite o estado: ');
+                   readln(mcp[cont].estado);
+                   write('Digite a populacao: ');
+                   readln(mcp[cont].populacao);
+                   writeln;
+                   writeln('Novo Municipio? [s/n]: ');
+                   readln(resp);
+                end;
+
+                maior:=mcp[0].populacao;
+
+
+               clrscr;
+
+                writeln;
+                writeln('------ Municipios -------');
+                writeln('---------- Do -----------');
+                writeln('-------- Estado ---------');
+                writeln('---------- De -----------');
+                writeln('------- Goias(GO) -------');
+                writeln;
+
+                for i:=1 to cont do
+                    if(mcp[i].estado='GO') then
+                          begin
+                              write('Nome: ');
+                              writeln(mcp[i].nome);
+                              write('Estado : ');
+                              writeln(mcp[i].estado);
+                              write('Populacao: ');
+                              writeln(mcp[i].populacao);
+                          end;
+
+                      ;
+                 ;
+
+                 writeln;
+                 writeln;
+                 writeln('------ Municipio com a Maior Populacao -------');
+                 writeln;
+
+
+
+                 for i:=1 to cont do
+                     if(mcp[i].populacao > maior) then
+                            begin
+                                 maior:=mcp[i].populacao;
+                                 pos:=i;
+                            end;
+
+                     ;
+                ;
+
+                write('Nome: ');
+                writeln(mcp[pos].nome);
+                write('Estado : ');
+                writeln(mcp[pos].estado);
+                write('Populacao: ');
+                writeln(mcp[pos].populacao);
+
+
+                ;
+
+       readln;
+
+end.
+
